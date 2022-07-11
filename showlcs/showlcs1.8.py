@@ -6,15 +6,43 @@
 #   29.05.2022
 #
 
-from glob import *
-from string import *
+try:
+    from glob import *
+except ImportError:
+    print('Import error. Please, write following in command line: pip install glob')
+
+try:
+    from string import *
+except ImportError:
+    print('Import error. Please, write following in command line: pip install string')
+
+try:
+    import numpy as np
+except ImportError:
+    print('Import error. Please, write following in command line: pip install numpy')
+
+try:
+    from matplotlib import pyplot as plt
+    import matplotlib.gridspec as gridspec
+except ImportError:
+    print('Import error. Please, write following in command line: pip install matplotlib')
+
+try:
+    import re
+except ImportError:
+    print('Import error. Please, write following in command line: pip install re')
+
+try:
+    import random
+except ImportError:
+    print('Import error. Please, write following in command line: pip install random')
+
+try:
+    import os
+except ImportError:
+    print('Import error. Please, write following in command line: pip install os')
+
 import sys
-import numpy as np
-from matplotlib import pyplot as plt
-import matplotlib.gridspec as gridspec
-import re
-import os
-import random
 
 list_points_glob = []
 t = 0
