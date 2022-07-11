@@ -132,14 +132,14 @@ class AutoClean(HelpingModule):
                 self.lc_str_all.append(mid_lc)
 
                 self.AsteroidName = item[0].split()[1]
-                self.CalDate.append(item[16+t].split()[3])
+                self.Filter.append(item[8].split()[1])
                 self.RelPlot = item[10].split()[2].strip()
+                self.CalDate.append(item[16+t].split()[3])
                 self.R.append(item[17+t].split()[2])
                 self.Delta.append(item[17+t].split()[3])
                 self.PA.append(float(item[17+t].split()[4]))
                 self.Lambda.append(item[17+t].split()[5])
                 self.Beta.append(item[17+t].split()[6])
-                self.Filter.append(item[8].split()[1])
                 lc = []
                 MaxTime = 0
                 MinTime = 3000000
@@ -150,9 +150,13 @@ class AutoClean(HelpingModule):
                     if tokens[0][0] == '!':
                         pass
                     else:
-                        JD = float(tokens[0])
-                        mag = float(tokens[1])
-                        magsig = float(tokens[2])
+                        try: 
+                            JD = float(tokens[0])
+                            mag = float(tokens[1])
+                            magsig = float(tokens[2])
+                        except:
+                            print(f'Escaping the program. There is a mistake in {self.DataFile}, correct it: {item}')
+                            exit()
                         lc.append([JD, mag, magsig, i])
                         i += 1
                         if MaxTime < JD:
