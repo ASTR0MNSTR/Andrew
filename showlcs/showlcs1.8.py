@@ -146,11 +146,10 @@ class AutoClean(HelpingModule):
                     lcnjunk = []
             i = 1
             for item in self.content_atl:
-                if item[16].split()[0] == 'INFORMATION...:':
-                    t = 1
-                else:
-                    t = 0  # 'INFORMATION' is one line or 2 lines
-
+                t = -1
+                for line in item[13:25]:
+                    if line.startswith('INFORMATION...:'):
+                        t += 1
                 self.cap.append(item[:19+t])
                 mid_lc = [' ' + item if item.startswith('!') == False else item for item in item[19+t:]]
                 self.lc_str.append(mid_lc)
